@@ -15,30 +15,24 @@ export class ProductController {
     @Get()
     async getAll(): Promise<Product[] | null> {
 
-        let products = await this.productService.getAll();
-        return products;
+        return await this.productService.getAll();         
     }
 
     @Get(':id')
     async getProduct(@Param('id', ParseIntPipe) id : number): Promise<Product | null> {
 
-        let product = await this.productService.get(id);
-
-        return product;
+        return await this.productService.get(id);
     }
 
     @Post('create')
     async createProduct(@Body() product: Product): Promise<Product> {
 
-        let result = await this.productService.create(product);
-
-        return result;
+        return await this.productService.create(product);
     }
 
     @Put('update')
     async updateProduct(@Body() product: Product): Promise<Product> {
-        await this.productService.update(product);
-        return product;
+        return await this.productService.update(product);        
     }
 
     @Delete(':id')
